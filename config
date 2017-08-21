@@ -1,0 +1,75 @@
+{
+  "resourceTypes": [
+    {
+      "name": "EC2::Subnet",
+      "template": "sn-{regionCode}{az}-{vpcName}"
+    },
+    {
+      "name": "S3::Bucket",
+      "template": "hf-s3-{regionCode}-{envCode}-{descriptiveName}-{f:uniqueDigits(12)}"
+    },
+    {
+      "name": "EC2::VPCPeeringConnection",
+      "template": "pcx-{regionCode}-{fromVpc}-to-{toVpc}"
+    }
+  ],
+  "questions": [
+    {
+      "name": "regionCode",
+      "message": "Region?",
+      "type": "list",
+      "choices": [
+        {
+          "name": "eu-west-1 (Ireland)",
+          "value": "ew1",
+          "short": "ew1"
+        },
+        {
+          "name": "eu-west-2 (London)",
+          "value": "ew2",
+          "short": "ew2"
+        },
+        {
+          "name": "eu-central-1 (Frankfurt)",
+          "value": "ec1",
+          "short": "ec1"
+        }
+      ],
+      "default": "ew1"
+    },
+    {
+      "name": "availabilityZone",
+      "message": "Availability Zone?",
+      "type": "list",
+      "choices": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "name": "envCode",
+      "message": "Environment?",
+      "type": "list",
+      "choices": [
+        {
+          "name": "Production",
+          "value": "p"
+        },
+        {
+          "name": "Staging",
+          "value": "s"
+        },
+        {
+          "name": "Development",
+          "value": "d"
+        }
+      ]
+    },
+    {
+      "name": "descriptiveName",
+      "message": "Descriptive name:",
+      "type": "input"
+    }
+  ]
+}
